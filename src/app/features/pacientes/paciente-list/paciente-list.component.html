@@ -1,0 +1,117 @@
+<div class="paciente-list-container">
+  <div class="header">
+    <h1>Lista de Pacientes</h1>
+    <button mat-raised-button color="primary" (click)="nuevoPaciente()">
+      <mat-icon>add</mat-icon>
+      Nuevo Paciente
+    </button>
+  </div>
+
+  <mat-form-field class="search-field">
+    <mat-label>Buscar</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Buscar paciente...">
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+
+  <div class="table-container mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let paciente">{{paciente.id}}</td>
+      </ng-container>
+
+      <!-- Nombre Mascota Column -->
+      <ng-container matColumnDef="nombreMascota">
+        <th mat-header-cell *matHeaderCellDef>Nombre Mascota</th>
+        <td mat-cell *matCellDef="let paciente">{{paciente.nombreMascota}}</td>
+      </ng-container>
+
+      <!-- Especie Column -->
+      <ng-container matColumnDef="especie">
+        <th mat-header-cell *matHeaderCellDef>Especie</th>
+        <td mat-cell *matCellDef="let paciente">{{paciente.especie}}</td>
+      </ng-container>
+
+      <!-- Raza Column -->
+      <ng-container matColumnDef="raza">
+        <th mat-header-cell *matHeaderCellDef>Raza</th>
+        <td mat-cell *matCellDef="let paciente">{{paciente.raza}}</td>
+      </ng-container>
+
+      <!-- Fecha Nacimiento Column -->
+      <ng-container matColumnDef="fechaNacimiento">
+        <th mat-header-cell *matHeaderCellDef>Fecha Nacimiento</th>
+        <td mat-cell *matCellDef="let paciente">{{paciente.fechaNacimiento}}</td>
+      </ng-container>
+
+      <!-- Tipo Identificación Dueño Column -->
+      <ng-container matColumnDef="tipoIdentificacionDueno">
+        <th mat-header-cell *matHeaderCellDef>Tipo ID Dueño</th>
+        <td mat-cell *matCellDef="let paciente">{{paciente.tipoIdentificacionDueno}}</td>
+      </ng-container>
+
+      <!-- Identificación Dueño Column -->
+      <ng-container matColumnDef="identificacionDueno">
+        <th mat-header-cell *matHeaderCellDef>ID Dueño</th>
+        <td mat-cell *matCellDef="let paciente">{{paciente.identificacionDueno}}</td>
+      </ng-container>
+
+      <!-- Nombre Dueño Column -->
+      <ng-container matColumnDef="nombreDueno">
+        <th mat-header-cell *matHeaderCellDef>Nombre Dueño</th>
+        <td mat-cell *matCellDef="let paciente">{{paciente.nombreDueno}}</td>
+      </ng-container>
+
+      <!-- Ciudad Column -->
+      <ng-container matColumnDef="ciudad">
+        <th mat-header-cell *matHeaderCellDef>Ciudad</th>
+        <td mat-cell *matCellDef="let paciente">{{paciente.ciudad}}</td>
+      </ng-container>
+
+      <!-- Dirección Column -->
+      <ng-container matColumnDef="direccion">
+        <th mat-header-cell *matHeaderCellDef>Dirección</th>
+        <td mat-cell *matCellDef="let paciente">{{paciente.direccion}}</td>
+      </ng-container>
+
+      <!-- Teléfono Column -->
+      <ng-container matColumnDef="telefono">
+        <th mat-header-cell *matHeaderCellDef>Teléfono</th>
+        <td mat-cell *matCellDef="let paciente">{{paciente.telefono}}</td>
+      </ng-container>
+
+      <!-- Fecha Registro Column -->
+      <ng-container matColumnDef="fechaRegistro">
+        <th mat-header-cell *matHeaderCellDef>Fecha Registro</th>
+        <td mat-cell *matCellDef="let paciente">{{paciente.fechaRegistro}}</td>
+      </ng-container>
+
+      <!-- Última Visita Column -->
+      <ng-container matColumnDef="ultimaVisita">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Última Visita</th>
+        <td mat-cell *matCellDef="let paciente">{{paciente.ultimaVisita | date:'dd/MM/yyyy'}}</td>
+      </ng-container>
+
+      <!-- Acciones Column -->
+      <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef>Acciones</th>
+        <td mat-cell *matCellDef="let paciente">
+          <div style="display: flex; gap: 8px; align-items: center;">
+            <button mat-icon-button color="primary" (click)="editarPaciente(paciente.id)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" (click)="eliminarPaciente(paciente.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="25" aria-label="Seleccionar página de pacientes"></mat-paginator>
+  </div>
+</div> 

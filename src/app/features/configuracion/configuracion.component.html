@@ -1,0 +1,17 @@
+<div class="configuracion-container">
+  <h1>Configuración</h1>
+  <div style="display: flex; gap: 16px; margin-bottom: 24px;">
+    <button mat-raised-button color="primary" (click)="logout()">
+      <mat-icon>exit_to_app</mat-icon>
+      Cerrar Sesión
+    </button>
+    <button mat-raised-button color="accent" (click)="exportarExcel()">
+      <mat-icon>file_download</mat-icon>
+      Exportar Datos
+    </button>
+    <button mat-raised-button color="warn" (click)="importarExcel()">
+      <mat-icon>file_upload</mat-icon>
+      Importar Datos
+    </button>
+  </div>
+</div> 

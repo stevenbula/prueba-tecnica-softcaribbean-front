@@ -1,0 +1,16 @@
+<div class="dashboard-container">
+
+  <div class="cards-container">
+    <mat-card *ngFor="let card of cards" class="dashboard-card" [style.background-color]="card.color">
+      <mat-card-content>
+        <div class="card-content">
+          <mat-icon class="card-icon">{{card.icon}}</mat-icon>
+          <div class="card-info">
+            <h2>{{card.title}}</h2>
+            <p class="count">{{card.count}}</p>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div> 
